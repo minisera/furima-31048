@@ -21,22 +21,23 @@
 
 ## itemsテーブル
 
-| Column     | Type         | Options                        |
-| ---------- | ------------ | ------------------------------ |
-| user       | references   | null: false, foreign_key: true |
-| name       | string       | null: false                    | 
-| image      | string       | null: false                    |
-| price      | integer      | null: false                    |
-| status     | string       | null: false                    |
-| category   | string       | null: false                    |
-| comment    | text         | null: false                    |
-| stock      | integer      | null: false                    |
+| Column        | Type         | Options                        |
+| --------------| ------------ | ------------------------------ |
+| user          | references   | null: false, foreign_key: true |
+| name          | string       | null: false                    | 
+| comment       | text         | null: false                    |
+| price         | integer      | null: false                    |
+| status_id     | integer      | null: false                    |
+| category_id   | integer      | null: false                    |
+| charge_id     | integer      | null: false                    |
+| source_id     | integer      | null: false                    |
+| day_id        | integer      | null: false                    |
 
 ### Association
 
 - has_many :comments
 - belongs_to :user
-- belongs_to :management
+- has_one :management
 
 ## managementsテーブル
 
@@ -44,27 +45,24 @@
 | ---------- | ------------ | ------------------------------ |
 | item       | references   | null: false, foreign_key: true |
 | user       | references   | null: false, foreign_key: true |
-| charge     | string       | null: false                    |
-| source     | string       | null: false                    |
-| day        | string       | null: false                    |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 
 ## addressesテーブル
 
-| Column     | Type         | Options                        |
-| ---------- | ------------ | ------------------------------ |
-| management | references   | null: false, foreign_key: true |
-| postal     | string       | null: false                    | 
-| prefecture | integer      | null: false                    |
-| city       | string       | null: false                    |
-| address    | string       | null: false                    |
-| building   | string       |                                |
-| phone      | string       | null: false                    |
+| Column        | Type         | Options                        |
+| ------------- | ------------ | ------------------------------ |
+| management    | references   | null: false, foreign_key: true |
+| postal        | string       | null: false                    | 
+| prefecture_id | integer      | null: false                    |
+| city          | string       | null: false                    |
+| address       | string       | null: false                    |
+| building      | string       |                                |
+| phone         | string       | null: false                    |
 
 ### Association
 
