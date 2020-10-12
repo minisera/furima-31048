@@ -1,24 +1,82 @@
-# README
+＃テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| first_name          | string | null: false |
+| last_name           | string | null: false |
+| first_name_katakana | string | null: false |
+| last_name_katakana  | string | null: false |
+| birthday            | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
+- has_many :managements
 
-* Configuration
+## itemsテーブル
 
-* Database creation
+| Column        | Type         | Options                        |
+| --------------| ------------ | ------------------------------ |
+| user          | references   | null: false, foreign_key: true |
+| name          | string       | null: false                    | 
+| comment       | text         | null: false                    |
+| price         | integer      | null: false                    |
+| status_id     | integer      | null: false                    |
+| category_id   | integer      | null: false                    |
+| charge_id     | integer      | null: false                    |
+| source_id     | integer      | null: false                    |
+| day_id        | integer      | null: false                    |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :comments
+- belongs_to :user
+- has_one :management
 
-* Services (job queues, cache servers, search engines, etc.)
+## managementsテーブル
 
-* Deployment instructions
+| Column     | Type         | Options                        |
+| ---------- | ------------ | ------------------------------ |
+| item       | references   | null: false, foreign_key: true |
+| user       | references   | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
+## addressesテーブル
+
+| Column        | Type         | Options                        |
+| ------------- | ------------ | ------------------------------ |
+| management    | references   | null: false, foreign_key: true |
+| postal        | string       | null: false                    | 
+| prefecture_id | integer      | null: false                    |
+| city          | string       | null: false                    |
+| address       | string       | null: false                    |
+| building      | string       |                                |
+| phone         | string       | null: false                    |
+
+### Association
+
+- belongs_to :management
+
+## commentsテーブル
+
+| Column     | Type         | Options                        |
+| ---------- | ------------ | ------------------------------ |
+| user       | references   | null: false, foreign_key: true |
+| item       | references   | null: false, foreign_key: true |
+| text       | text         | null: false                    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
