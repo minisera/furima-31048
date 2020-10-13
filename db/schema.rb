@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_220859) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "first_name", null: false
@@ -46,4 +47,5 @@ ActiveRecord::Schema.define(version: 2020_10_12_220859) do
   end
 
   add_foreign_key "items", "users"
+
 end
