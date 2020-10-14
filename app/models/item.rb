@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-  
+
   with_options presence: true do
     validates :name
     validates :comment
@@ -20,8 +20,8 @@ class Item < ApplicationRecord
     validates :day_id
     validates :image
   end
-  
-  with_options numericality: {other_than: 1} do
+
+  with_options numericality: { other_than: 1 } do
     validates :status_id
     validates :category_id
     validates :charge_id
@@ -29,6 +29,5 @@ class Item < ApplicationRecord
     validates :day_id
   end
 
-  validates :price,inclusion: { in: 333..9999999,message: 'Include ¥333-¥9.999.999 numbers'},format: { with: /\A[0-9]+\z/} 
-
+  validates :price, inclusion: { in: 333..9_999_999, message: 'Include ¥333-¥9.999.999 numbers' }, format: { with: /\A[0-9]+\z/ }
 end
