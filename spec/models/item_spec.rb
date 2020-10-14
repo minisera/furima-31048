@@ -55,12 +55,12 @@ RSpec.describe Item, type: :model do
       it 'priceが¥299以下だと登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Include ¥333-¥9.999.999 numbers')
+        expect(@item.errors.full_messages).to include('Price Include ¥300-¥9.999.999 numbers')
       end
       it 'priceが¥10.000.000以上だと登録できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Include ¥333-¥9.999.999 numbers')
+        expect(@item.errors.full_messages).to include('Price Include ¥300-¥9.999.999 numbers')
       end
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil

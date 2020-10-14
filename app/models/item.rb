@@ -29,5 +29,5 @@ class Item < ApplicationRecord
     validates :day_id
   end
 
-  validates :price, inclusion: { in: 333..9_999_999, message: 'Include ¥333-¥9.999.999 numbers' }, format: { with: /\A[0-9]+\z/ }
+  validates :price, inclusion: { in: 300..9_999_999, message: 'Include ¥300-¥9.999.999 numbers' }, format: { with: /\A[0-9]+\z/ }
 end
