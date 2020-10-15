@@ -1,12 +1,5 @@
 class Address < ApplicationRecord
   belongs_to :order
+  belongs_to_active_hash :source
 
-  with_options presence:true do
-    validates :order
-    validates :postal
-    validates :city
-    validates :prefecture_id
-    validates :address
-    validates :phone
-   end
 end
