@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :managements
+- has_many :orders
 
 ## itemsテーブル
 
@@ -37,9 +37,9 @@
 
 - has_many :comments
 - belongs_to :user
-- has_one :management
+- has_one :order
 
-## managementsテーブル
+## ordersテーブル
 
 | Column     | Type         | Options                        |
 | ---------- | ------------ | ------------------------------ |
@@ -66,7 +66,7 @@
 
 ### Association
 
-- belongs_to :management
+- belongs_to :orders
 
 ## commentsテーブル
 
