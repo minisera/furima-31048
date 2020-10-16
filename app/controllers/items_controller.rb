@@ -42,8 +42,11 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-
   private
+  
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :comment, :price, :status_id, :category_id, :charge_id, :source_id, :day_id, :image).merge(user_id: current_user.id)
@@ -54,7 +57,4 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless current_user.id == @item.user_id
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
 end
