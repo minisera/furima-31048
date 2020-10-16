@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :managements
+- has_many :orders
 
 ## itemsテーブル
 
@@ -37,9 +37,9 @@
 
 - has_many :comments
 - belongs_to :user
-- has_one :management
+- has_one :order
 
-## managementsテーブル
+## ordersテーブル
 
 | Column     | Type         | Options                        |
 | ---------- | ------------ | ------------------------------ |
@@ -56,7 +56,7 @@
 
 | Column        | Type         | Options                        |
 | ------------- | ------------ | ------------------------------ |
-| management    | references   | null: false, foreign_key: true |
+| order         | references   | null: false, foreign_key: true |
 | postal        | string       | null: false                    | 
 | prefecture_id | integer      | null: false                    |
 | city          | string       | null: false                    |
@@ -66,7 +66,7 @@
 
 ### Association
 
-- belongs_to :management
+- belongs_to :order
 
 ## commentsテーブル
 
