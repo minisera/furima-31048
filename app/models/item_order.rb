@@ -3,12 +3,12 @@ class ItemOrder
   attr_accessor :token,:postal,:city,:address,:prefecture_id,:building,:phone,:user_id,:item_id
 
   with_options presence:true do
-    validates :postal
+    validates :postal,format: {with: /\A\d{3}[-]\d{4}\z/}
     validates :city
     validates :prefecture_id
     validates :address
-    validates :phone
-    varidates :token
+    validates :phone,format: {with: /\A\d{10,11}\z/}
+    validates :token
   end
 
   def save
