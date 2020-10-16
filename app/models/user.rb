@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
-  
+
   validates :nickname, presence: true
   validates :email, uniqueness: true
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'Full-width characters' } do
