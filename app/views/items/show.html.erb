@@ -23,17 +23,15 @@
       </span>
     </div>
 
-    <% unless @item.order %>
       <% if current_user == @item.user %>
         <%= link_to '商品の編集', edit_item_path(@item), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-      <% end %>
+      <% end  unless @item.order %>
     
       <% if  current_user != @item.user && user_signed_in? %>
         <%= link_to '購入画面に進む', item_orders_path(@item),class:"item-red-btn"%>
-      <% end %>
-    <% end %>
+      <% end  unless @item.order %>
 
     <div class="item-explain-box">
       <span><%= @item.comment %></span>

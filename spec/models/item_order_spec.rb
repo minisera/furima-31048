@@ -47,6 +47,11 @@ RSpec.describe ItemOrder, type: :model do
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include('Prefecture must be other than 1')
       end
+      it 'prefecture_idが空の場合' do
+        @item_order.prefecture_id = ''
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include("Prefecture can't be blank")
+      end
     end
     context '購入できる場合' do
       it 'buildingは空でも登録できること' do

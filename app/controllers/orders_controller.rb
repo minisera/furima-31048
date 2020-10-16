@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item,
+  before_action :set_item
 
   def index
     redirect_to root_path if current_user.id == @item.user.id || @item.order
