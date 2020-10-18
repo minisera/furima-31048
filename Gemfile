@@ -58,7 +58,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
+gem 'unicorn', '5.4.1'
 end
 
 gem 'active_hash'
@@ -67,3 +68,4 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem 'pry-rails'
+gem "aws-sdk-s3", require: false

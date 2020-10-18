@@ -47,6 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+
 production:
   <<: *default
   database: furima_31048_production
